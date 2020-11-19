@@ -76,7 +76,6 @@ vqvae_h4 = Hyperparams(
     depth = 4,
     m_conv = 1.0,
     dilation_growth_rate = 3,
-    restore_vqvae=REMOTE_PREFIX + 'jukebox/models/5b/vqvae.pth.tar',
 )
 HPARAMS_REGISTRY["vqvae_h4"] = vqvae_h4
 labels = Hyperparams(
@@ -120,10 +119,10 @@ upsampler_level_1 = Hyperparams(
 )
 upsampler_level_1.update(upsamplers)
 HPARAMS_REGISTRY["upsampler_level_1"] = upsampler_level_1
+
 upsampler_level_2 = Hyperparams(
     level=2,
     cond_res_scale=True,
-    restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_1.pth.tar'
 )
 upsampler_level_2.update(upsamplers)
 HPARAMS_REGISTRY["upsampler_level_2"] = upsampler_level_2
@@ -169,7 +168,6 @@ prior_h4 = Hyperparams(
     n_tokens=0,
     prime_loss_fraction=0.0,
     merged_decoder=True,
-    restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_2.pth.tar',
     fp16_params=True,
 )
 prior_h4.update(labels)
