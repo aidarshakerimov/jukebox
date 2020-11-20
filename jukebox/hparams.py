@@ -104,7 +104,7 @@ upsamplers = Hyperparams(
     fp16_params=False,
 )
 upsamplers.update(labels)
-customupsamplers = Hyperparams(
+custom_upsamplers = Hyperparams(
     n_ctx=8192,
     prior_width=1920,
     prior_depth=72,
