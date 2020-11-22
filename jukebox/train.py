@@ -209,6 +209,7 @@ def train(model, orig_model, opt, shd, scalar, ema, logger, metrics, data_proces
         _print_keys = dict(l="loss", sl="spectral_loss", rl="recons_loss", e="entropy", u="usage", uc="used_curr", gn="gn", pn="pn", dk="dk")
 
     for i, x in logger.get_range(data_processor.train_loader):
+        print("yo")
         if isinstance(x, (tuple, list)):
             x, y = x
         else:
