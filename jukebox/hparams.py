@@ -172,27 +172,27 @@ prior_5b.update(labels)
 HPARAMS_REGISTRY["prior_5b"] = prior_5b
 
 
-prior_h4 = Hyperparams(
-    level=3,
-    n_ctx=8192,
-    prior_width=4800,
-    prior_depth=72,
-    heads=8,
-    attn_order=2,
-    blocks=128,
-    init_scale=0.1,
-    c_res=1,
-    beta2=0.925,
-    min_duration=60.0,
-    max_duration=600.0,
-    use_tokens=False,
-    n_tokens=0,
-    prime_loss_fraction=0.0,
-    merged_decoder=True,
-    fp16_params=True,
-)
-prior_h4.update(labels)
-HPARAMS_REGISTRY["prior_h4"] = prior_h4
+# prior_h4 = Hyperparams(
+#     level=3,
+#     n_ctx=8192,
+#     prior_width=4800,
+#     prior_depth=72,
+#     heads=8,
+#     attn_order=2,
+#     blocks=128,
+#     init_scale=0.1,
+#     c_res=1,
+#     beta2=0.925,
+#     min_duration=60.0,
+#     max_duration=600.0,
+#     use_tokens=False,
+#     n_tokens=0,
+#     prime_loss_fraction=0.0,
+#     merged_decoder=True,
+#     fp16_params=True,
+# )
+# prior_h4.update(labels)
+# HPARAMS_REGISTRY["prior_h4"] = prior_h4
 
 prior_5b_lyrics = Hyperparams(
     level=2,
@@ -288,7 +288,17 @@ small_prior = Hyperparams(
     init_scale=0.7,
 )
 HPARAMS_REGISTRY["small_prior"] = small_prior
-
+prior_h4 = Hyperparams(
+    n_ctx=8192,
+    prior_width=1024,
+    prior_depth=48,
+    heads=1,
+    c_res=1,
+    attn_order=2,
+    blocks=64,
+    init_scale=0.7,
+)
+HPARAMS_REGISTRY["prior_h4"] = prior_h4
 small_labelled_prior = Hyperparams(
     labels=True,
     labels_v3=True,
