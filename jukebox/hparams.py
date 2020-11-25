@@ -54,7 +54,7 @@ vqvae = Hyperparams(
     depth = 4,
     m_conv = 1.0,
     dilation_growth_rate = 3,
-    restore_vqvae=REMOTE_PREFIX + 'jukebox/models/5b/vqvae.pth.tar',
+  #  restore_vqvae=REMOTE_PREFIX + 'jukebox/models/5b/vqvae.pth.tar',
 )
 HPARAMS_REGISTRY["vqvae"] = vqvae
 
@@ -201,6 +201,49 @@ prior_5b = Hyperparams(
 prior_5b.update(labels)
 HPARAMS_REGISTRY["prior_5b"] = prior_5b
 
+prior_h3 = Hyperparams(
+    level=2,
+    n_ctx=8192,
+    prior_width=4800,
+    prior_depth=72,
+    heads=8,
+    attn_order=2,
+    blocks=128,
+    init_scale=0.1,
+    c_res=1,
+    beta2=0.925,
+    min_duration=60.0,
+    max_duration=600.0,
+    use_tokens=False,
+    n_tokens=0,
+    prime_loss_fraction=0.0,
+    merged_decoder=True,
+    fp16_params=True,
+)
+prior_h3.update(labels)
+HPARAMS_REGISTRY["prior_h3"] = prior_h3
+
+prior_h3 = Hyperparams(
+    level=2,
+    n_ctx=8192,
+    prior_width=4800,
+    prior_depth=72,
+    heads=8,
+    attn_order=2,
+    blocks=128,
+    init_scale=0.1,
+    c_res=1,
+    beta2=0.925,
+    min_duration=60.0,
+    max_duration=600.0,
+    use_tokens=False,
+    n_tokens=0,
+    prime_loss_fraction=0.0,
+    merged_decoder=True,
+    fp16_params=True,
+)
+prior_h3.update(labels)
+HPARAMS_REGISTRY["prior_h3"] = prior_h3
 
 prior_h4 = Hyperparams(
     level=3,
@@ -246,7 +289,7 @@ prior_h4_2 = Hyperparams(
 prior_h4_2.update(labels)
 HPARAMS_REGISTRY["prior_h4_2"] = prior_h4_2
 
-prior_h4 = Hyperparams(
+prior_h5 = Hyperparams(
     level=4,
     n_ctx=8192,
     prior_width=4800,
