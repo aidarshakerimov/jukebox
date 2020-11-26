@@ -616,7 +616,7 @@ upsampler_level_3 = Hyperparams(
     level=3,
     cond_res_scale=True,
 )
-upsampler_level_3.update(custom_upsamplers)
+upsampler_level_3.update(small_upsamplers)
 HPARAMS_REGISTRY["upsampler_level_3"] = upsampler_level_3
 
 all_fp16 = Hyperparams(
