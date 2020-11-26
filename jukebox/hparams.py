@@ -146,37 +146,7 @@ custom_upsamplers = Hyperparams(
     fp16_params=False,
 )
 custom_upsamplers.update(labels)
-upsampler_level_0 = Hyperparams(
-    level=0,
- #   restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_0.pth.tar'
-)
-upsampler_level_0.update(small_upsampler)
-HPARAMS_REGISTRY["upsampler_level_0"] = upsampler_level_0
 
-
-
-upsampler_level_1 = Hyperparams(
-    level=1,
-    cond_res_scale=True,
-  #  restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_1.pth.tar'
-)
-upsampler_level_1.update(small_upsampler)
-HPARAMS_REGISTRY["upsampler_level_1"] = upsampler_level_1
-
-
-upsampler_level_2 = Hyperparams(
-    level=2,
-    cond_res_scale=True,
-)
-upsampler_level_2.update(small_upsampler)
-HPARAMS_REGISTRY["upsampler_level_2"] = upsampler_level_2
-
-upsampler_level_3 = Hyperparams(
-    level=3,
-    cond_res_scale=True,
-)
-upsampler_level_3.update(custom_upsamplers)
-HPARAMS_REGISTRY["upsampler_level_3"] = upsampler_level_3
 
 prior_5b = Hyperparams(
     level=2,
@@ -616,6 +586,38 @@ small_upsampler = Hyperparams(
 )
 
 HPARAMS_REGISTRY["small_upsampler"] = small_upsampler
+
+upsampler_level_0 = Hyperparams(
+    level=0,
+ #   restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_0.pth.tar'
+)
+upsampler_level_0.update(small_upsampler)
+HPARAMS_REGISTRY["upsampler_level_0"] = upsampler_level_0
+
+
+
+upsampler_level_1 = Hyperparams(
+    level=1,
+    cond_res_scale=True,
+  #  restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_1.pth.tar'
+)
+upsampler_level_1.update(small_upsampler)
+HPARAMS_REGISTRY["upsampler_level_1"] = upsampler_level_1
+
+
+upsampler_level_2 = Hyperparams(
+    level=2,
+    cond_res_scale=True,
+)
+upsampler_level_2.update(small_upsampler)
+HPARAMS_REGISTRY["upsampler_level_2"] = upsampler_level_2
+
+upsampler_level_3 = Hyperparams(
+    level=3,
+    cond_res_scale=True,
+)
+upsampler_level_3.update(custom_upsamplers)
+HPARAMS_REGISTRY["upsampler_level_3"] = upsampler_level_3
 
 all_fp16 = Hyperparams(
     fp16=True,
