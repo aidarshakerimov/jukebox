@@ -146,8 +146,6 @@ custom_upsamplers = Hyperparams(
     fp16_params=False,
 )
 custom_upsamplers.update(labels)
-
-
 prior_5b = Hyperparams(
     level=2,
     n_ctx=8192,
@@ -380,6 +378,7 @@ vqvae_h4 = Hyperparams(
     depth = 4,
     m_conv = 1.0,
     dilation_growth_rate = 3,
+#    restore_vqvae='logs/vqvae_h4/checkpoint_step_1.pth.tar',  #uncomment for sampling
 )
 HPARAMS_REGISTRY["vqvae_h4"] = vqvae_h4
 
@@ -400,6 +399,7 @@ vqvae_h4_2 = Hyperparams(
     depth = 4,
     m_conv = 1.0,
     dilation_growth_rate = 3,
+#    restore_vqvae='logs/vqvae_h4_2/checkpoint_step_1.pth.tar',  #uncomment for sampling
 )
 HPARAMS_REGISTRY["vqvae_h4_2"] = vqvae_h4_2
 
@@ -420,6 +420,7 @@ vqvae_h5 = Hyperparams(
     depth = 4,
     m_conv = 1.0,
     dilation_growth_rate = 3,
+#    restore_vqvae='logs/vqvae_h5/checkpoint_step_1.pth.tar',  #uncomment for sampling
 )
 HPARAMS_REGISTRY["vqvae_h5"] = vqvae_h5
 
@@ -440,6 +441,7 @@ vqvae_h3 = Hyperparams(
     depth = 4,
     m_conv = 1.0,
     dilation_growth_rate = 3,
+#    restore_vqvae='logs/vqvae_h3/checkpoint_step_1.pth.tar',  #uncomment for sampling
 )
 HPARAMS_REGISTRY["vqvae_h3"] = vqvae_h3
 
@@ -463,11 +465,15 @@ prior_h4 = Hyperparams(
     attn_order=2,
     blocks=64,
     init_scale=0.7,
+    labels = False,
+    level = 3,
+  #  restore_prior = 'logs/prior_h4_l3/checkpoint_latest.pth.tar'  #uncomment for sampling
 )
 HPARAMS_REGISTRY["prior_h4"] = prior_h4
 
 prior_h4_2 = Hyperparams(
     n_ctx=8192,
+    level = 3,
     prior_width=1024,
     prior_depth=48,
     heads=1,
@@ -475,11 +481,14 @@ prior_h4_2 = Hyperparams(
     attn_order=2,
     blocks=64,
     init_scale=0.7,
+    labels=False,
+  #  restore_prior = 'logs/prior_h4_2_3/checkpoint_latest.pth.tar'  #uncomment for sampling
 )
 HPARAMS_REGISTRY["prior_h4_2"] = prior_h4_2
 
 
 prior_h5 = Hyperparams(
+    level = 4,
     n_ctx=8192,
     prior_width=1024,
     prior_depth=48,
@@ -488,10 +497,13 @@ prior_h5 = Hyperparams(
     attn_order=2,
     blocks=64,
     init_scale=0.7,
+    labels = False,
+  #  restore_prior = 'logs/prior_h5/checkpoint_latest.pth.tar'  #uncomment for sampling
 )
 HPARAMS_REGISTRY["prior_h5"] = prior_h5
 
 prior_h3 = Hyperparams(
+    level = 2,
     n_ctx=8192,
     prior_width=1024,
     prior_depth=48,
@@ -500,6 +512,8 @@ prior_h3 = Hyperparams(
     attn_order=2,
     blocks=64,
     init_scale=0.7,
+    labels = False,
+ #   restore_prior = 'logs/prior_h3/checkpoint_latest.pth.tar'  #uncomment for sampling
 )
 HPARAMS_REGISTRY["prior_h3"] = prior_h3
 
@@ -583,13 +597,15 @@ small_upsampler = Hyperparams(
     cond_dilation_growth_rate=3,
     cond_dilation_cycle=8,
     cond_c_res=1,
+    labels =False
 )
 
 HPARAMS_REGISTRY["small_upsampler"] = small_upsampler
 
+
 upsampler_level_0 = Hyperparams(
     level=0,
- #   restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_0.pth.tar'
+ #   restore_prior='logs/upsampler_0/checkpoint_latest.pth.tar'   #uncomment for sampling
 )
 upsampler_level_0.update(small_upsampler)
 HPARAMS_REGISTRY["upsampler_level_0"] = upsampler_level_0
@@ -599,7 +615,7 @@ HPARAMS_REGISTRY["upsampler_level_0"] = upsampler_level_0
 upsampler_level_1 = Hyperparams(
     level=1,
     cond_res_scale=True,
-  #  restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_1.pth.tar'
+  #  restore_prior='logs/upsampler_1/checkpoint_latest.pth.tar' #uncomment for sampling
 )
 upsampler_level_1.update(small_upsampler)
 HPARAMS_REGISTRY["upsampler_level_1"] = upsampler_level_1
@@ -608,6 +624,7 @@ HPARAMS_REGISTRY["upsampler_level_1"] = upsampler_level_1
 upsampler_level_2 = Hyperparams(
     level=2,
     cond_res_scale=True,
+    #restore_prior='logs/upsampler_2/checkpoint_latest.pth.tar'    #uncomment for sampling
 )
 upsampler_level_2.update(small_upsampler)
 HPARAMS_REGISTRY["upsampler_level_2"] = upsampler_level_2
@@ -615,8 +632,9 @@ HPARAMS_REGISTRY["upsampler_level_2"] = upsampler_level_2
 upsampler_level_3 = Hyperparams(
     level=3,
     cond_res_scale=True,
+    #restore_prior='logs/upsampler_3/checkpoint_latest.pth.tar'    #uncomment for sampling
 )
-upsampler_level_3.update(small_upsamplers)
+upsampler_level_3.update(small_upsampler)
 HPARAMS_REGISTRY["upsampler_level_3"] = upsampler_level_3
 
 all_fp16 = Hyperparams(
@@ -717,7 +735,7 @@ DEFAULTS["prior"] = Hyperparams(
     restore_prior='',
     restore_prior_ddp=False,
     max_bow_genre_size=None,
-    y_bins=0,
+    y_bins=(0, 0),
     level=0,
     cond_levels=None,
     t_bins=64,
@@ -881,3 +899,4 @@ DEFAULTS["audio"] = Hyperparams(
 DEFAULTS["distributed"] = Hyperparams(
     bucket=128
 )
+
