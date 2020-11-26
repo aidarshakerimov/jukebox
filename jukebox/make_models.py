@@ -21,7 +21,8 @@ MODELS = {
     'custom_model_h5': ("vqvae_h5", "upsampler_level_0", "upsampler_level_1","upsampler_level_2", "upsampler_level_3", "prior_h5"),
     'custom_model_h4_2': ("vqvae_h4_2", "upsampler_level_0", "upsampler_level_1","upsampler_level_2", "prior_h4_2"),
     'custom_model_h4': ("vqvae_h4", "upsampler_level_0", "upsampler_level_1","upsampler_level_2", "prior_h4"),
-    'custom_model_h3': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_h3"),
+    'custom_model_h3': ("vqvae_h3", "upsampler_level_0", "upsampler_level_1", "prior_h3"),
+    'custom_model_h2': ("vqvae_h2", "upsampler_level_0","prior_h2"),
 }
 
 def load_checkpoint(path):
