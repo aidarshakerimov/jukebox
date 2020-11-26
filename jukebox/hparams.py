@@ -58,49 +58,6 @@ vqvae = Hyperparams(
 )
 HPARAMS_REGISTRY["vqvae"] = vqvae
 
-# vqvae_h4 = Hyperparams(
-#     levels = 4,
-#     downs_t = (1, 2, 2, 2),
-#     strides_t = (2, 2, 2, 2),
-#     emb_width = 64,
-#     l_bins = 2048,
-#     l_mu = 0.99,
-#     commit = 0.02,
-#     spectral = 0.0,
-#     multispectral = 1.0,
-#     hvqvae_multipliers = (2, 1, 1, 1),
-#     loss_fn = 'lmix',
-#     lmix_l2 = 1.0,
-#     lmix_linf=0.02,
-#     width = 32,
-#     depth = 4,
-#     m_conv = 1.0,
-#     dilation_growth_rate = 3,
-# )
-# HPARAMS_REGISTRY["vqvae_h4"] = vqvae_h4
-
-
-# vqvae_h5 = Hyperparams(
-#     levels = 5,
-#     downs_t = (1, 2, 2, 2, 2),
-#     strides_t = (2, 2, 2, 2, 2),
-#     emb_width = 64,
-#     l_bins = 2048,
-#     l_mu = 0.99,
-#     commit = 0.02,
-#     spectral = 0.0,
-#     multispectral = 1.0,
-#     hvqvae_multipliers = (2, 1, 1, 1, 1),
-#     loss_fn = 'lmix',
-#     lmix_l2 = 1.0,
-#     lmix_linf=0.02,
-#     width = 32,
-#     depth = 4,
-#     m_conv = 1.0,
-#     dilation_growth_rate = 3,
-# )
-# HPARAMS_REGISTRY["vqvae_h5"] = vqvae_h5
-
 labels = Hyperparams(
     y_bins=(120, 4111),
     t_bins=128,
@@ -169,115 +126,6 @@ prior_5b = Hyperparams(
 prior_5b.update(labels)
 HPARAMS_REGISTRY["prior_5b"] = prior_5b
 
-# prior_h3 = Hyperparams(
-#     level=2,
-#     n_ctx=8192,
-#     prior_width=4800,
-#     prior_depth=72,
-#     heads=8,
-#     attn_order=2,
-#     blocks=128,
-#     init_scale=0.1,
-#     c_res=1,
-#     beta2=0.925,
-#     min_duration=60.0,
-#     max_duration=600.0,
-#     use_tokens=False,
-#     n_tokens=0,
-#     prime_loss_fraction=0.0,
-#     merged_decoder=True,
-#     fp16_params=True,
-# )
-# prior_h3.update(labels)
-# HPARAMS_REGISTRY["prior_h3"] = prior_h3
-
-# prior_h3 = Hyperparams(
-#     level=2,
-#     n_ctx=8192,
-#     prior_width=4800,
-#     prior_depth=72,
-#     heads=8,
-#     attn_order=2,
-#     blocks=128,
-#     init_scale=0.1,
-#     c_res=1,
-#     beta2=0.925,
-#     min_duration=60.0,
-#     max_duration=600.0,
-#     use_tokens=False,
-#     n_tokens=0,
-#     prime_loss_fraction=0.0,
-#     merged_decoder=True,
-#     fp16_params=True,
-# )
-# prior_h3.update(labels)
-# HPARAMS_REGISTRY["prior_h3"] = prior_h3
-
-# prior_h4 = Hyperparams(
-#     level=3,
-#     n_ctx=8192,
-#     prior_width=4800,
-#     prior_depth=72,
-#     heads=8,
-#     attn_order=2,
-#     blocks=128,
-#     init_scale=0.1,
-#     c_res=1,
-#     beta2=0.925,
-#     min_duration=60.0,
-#     max_duration=600.0,
-#     use_tokens=False,
-#     n_tokens=0,
-#     prime_loss_fraction=0.0,
-#     merged_decoder=True,
-#     fp16_params=True,
-# )
-# prior_h4.update(labels)
-# HPARAMS_REGISTRY["prior_h4"] = prior_h4
-
-# prior_h4_2 = Hyperparams(
-#     level=3,
-#     n_ctx=8192,
-#     prior_width=4800,
-#     prior_depth=72,
-#     heads=8,
-#     attn_order=2,
-#     blocks=128,
-#     init_scale=0.1,
-#     c_res=1,
-#     beta2=0.925,
-#     min_duration=60.0,
-#     max_duration=600.0,
-#     use_tokens=False,
-#     n_tokens=0,
-#     prime_loss_fraction=0.0,
-#     merged_decoder=True,
-#     fp16_params=True,
-# )
-# prior_h4_2.update(labels)
-# HPARAMS_REGISTRY["prior_h4_2"] = prior_h4_2
-
-# prior_h5 = Hyperparams(
-#     level=4,
-#     n_ctx=8192,
-#     prior_width=4800,
-#     prior_depth=72,
-#     heads=8,
-#     attn_order=2,
-#     blocks=128,
-#     init_scale=0.1,
-#     c_res=1,
-#     beta2=0.925,
-#     min_duration=60.0,
-#     max_duration=600.0,
-#     use_tokens=False,
-#     n_tokens=0,
-#     prime_loss_fraction=0.0,
-#     merged_decoder=True,
-#     fp16_params=True,
-# )
-# prior_h5.update(labels)
-# HPARAMS_REGISTRY["prior_h5"] = prior_h5
 
 prior_5b_lyrics = Hyperparams(
     level=2,
@@ -444,6 +292,25 @@ vqvae_h3 = Hyperparams(
 #    restore_vqvae='logs/vqvae_h3/checkpoint_step_1.pth.tar',  #uncomment for sampling
 )
 HPARAMS_REGISTRY["vqvae_h3"] = vqvae_h3
+vqvae_h2 = Hyperparams(
+    sr = 22050,
+    levels = 2,
+    downs_t = (5, 3),
+    strides_t = (2, 2),
+    emb_width = 64,
+    l_bins = 1024,
+    l_mu = 0.99,
+    commit = 0.02,
+    spectral = 0.0,
+    multispectral = 1.0,
+    loss_fn = 'l2',
+    width = 32,
+    depth = 4,
+    m_conv = 1.0,
+    dilation_growth_rate = 3,
+#    restore_vqvae='logs/vqvae_h2/checkpoint_step_1.pth.tar',  #uncomment for sampling
+)
+HPARAMS_REGISTRY["vqvae_h2"] = vqvae_h2
 
 small_prior = Hyperparams(
     n_ctx=8192,
@@ -516,6 +383,20 @@ prior_h3 = Hyperparams(
  #   restore_prior = 'logs/prior_h3/checkpoint_latest.pth.tar'  #uncomment for sampling
 )
 HPARAMS_REGISTRY["prior_h3"] = prior_h3
+prior_h2 = Hyperparams(
+    level = 1,
+    n_ctx=8192,
+    prior_width=1024,
+    prior_depth=48,
+    heads=1,
+    c_res=1,
+    attn_order=2,
+    blocks=64,
+    init_scale=0.7,
+    labels = False,
+ #   restore_prior = 'logs/prior_h2/checkpoint_latest.pth.tar'  #uncomment for sampling
+)
+HPARAMS_REGISTRY["prior_h2"] = prior_h2
 
 small_labelled_prior = Hyperparams(
     labels=True,
@@ -818,7 +699,7 @@ DEFAULTS["prime_attn_block"] = Hyperparams(
 )
 
 DEFAULTS["opt"] = Hyperparams(
-    epochs=1,
+    epochs=10,
     lr=0.0003,
     clip=1.0,
     beta1=0.9,
