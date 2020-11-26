@@ -225,6 +225,8 @@ def save_samples(model, device, hps, sample_hps):
     metas = metas[:hps.n_samples]
 
     labels = [prior.labeller.get_batch_labels(metas, 'cuda') for prior in priors]
+    print("sssss")
+    print(len(labels))
     for label in labels:
         assert label['y'].shape[0] == hps.n_samples
 
@@ -237,6 +239,7 @@ def save_samples(model, device, hps, sample_hps):
         chunk_size = 16
         max_batch_size = 3
     sampling_kwargs = [dict(temp=0.99, fp16=True, chunk_size=lower_level_chunk_size, max_batch_size=lower_level_max_batch_size),
+                       dict(temp=0.99, fp16=True, chunk_size=lower_level_chunk_size, max_batch_size=lower_level_max_batch_size),
                        dict(temp=0.99, fp16=True, chunk_size=lower_level_chunk_size, max_batch_size=lower_level_max_batch_size),
                        dict(temp=0.99, fp16=True, chunk_size=chunk_size, max_batch_size=max_batch_size)]
 
